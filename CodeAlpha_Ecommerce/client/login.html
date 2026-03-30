@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="navbar">
+
+<div class="logo">
+<h2>MyStore</h2>
+</div>
+
+<div class="nav-links">
+
+<a href="index.html">Home</a>
+<a href="cart.html">Cart</a>
+<a href="login.html">Login</a>
+<a href="register.html">Register</a>
+
+</div>
+
+</div>
+
+<h2>User Login</h2>
+
+<form id="loginForm">
+
+<input type="email" placeholder="Email" id="email" required>
+
+<input type="password" placeholder="Password" id="password" required>
+
+<button type="submit">Login</button>
+
+</form>
+
+<script>
+
+document.getElementById("loginForm").addEventListener("submit", async function(e){
+
+e.preventDefault();
+
+const email = document.getElementById("email").value;
+const password = document.getElementById("password").value;
+
+const res = await fetch("http://localhost:5000/api/users/login",{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({email,password})
+
+});
+
+const data = await res.json();
+
+localStorage.setItem("token",data.token);
+alert("Login Successful");
+window.location.href = "index.html";
+
+});
+
+</script>
+
+</body>
+</html>

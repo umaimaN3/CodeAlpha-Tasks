@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Register</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="navbar">
+
+<div class="logo">
+<h2>MyStore</h2>
+</div>
+
+<div class="nav-links">
+
+<a href="index.html">Home</a>
+<a href="cart.html">Cart</a>
+<a href="login.html">Login</a>
+<a href="register.html">Register</a>
+
+</div>
+
+</div>
+
+<h2>User Register</h2>
+
+<form id="registerForm">
+
+<input type="text" placeholder="Name" id="name" required>
+
+<input type="email" placeholder="Email" id="email" required>
+
+<input type="password" placeholder="Password" id="password" required>
+
+<button type="submit">Register</button>
+
+</form>
+
+<script>
+
+document.getElementById("registerForm").addEventListener("submit", async function(e){
+
+e.preventDefault();
+
+const name = document.getElementById("name").value;
+const email = document.getElementById("email").value;
+const password = document.getElementById("password").value;
+
+await fetch("http://localhost:5000/api/users/register",{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({name,email,password})
+
+});
+
+alert("User Registered");
+window.location.href = "login.html";
+
+});
+
+</script>
+
+</body>
+</html>

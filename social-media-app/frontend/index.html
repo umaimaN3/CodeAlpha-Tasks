@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SocialHub - Home</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <div class="logo">SocialHub</div>
+      <div class="nav-links">
+        <a href="index.html" class="active">Home</a>
+        <a href="#">Explore</a>
+        <a href="#">Messages</a>
+      </div>
+    </div>
+    <div class="nav-right">
+      <button class="btn-icon">🔍</button>
+      <button class="btn-icon">🔔</button>
+      <div class="user-menu">
+        <div class="user-avatar">U</div>
+        <button class="btn-logout" onclick="logout()">Logout</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main-container">
+    <!-- Stories -->
+    <div class="stories-bar">
+      <div class="story add">
+        <div class="story-ring">
+          <div class="story-img">+</div>
+        </div>
+        <span class="story-name">Add Story</span>
+      </div>
+      <div class="story">
+        <div class="story-ring">
+          <div class="story-img" style="background: #333;"></div>
+        </div>
+        <span class="story-name">user_one</span>
+      </div>
+      <div class="story">
+        <div class="story-ring">
+          <div class="story-img" style="background: #444;"></div>
+        </div>
+        <span class="story-name">user_two</span>
+      </div>
+      <div class="story">
+        <div class="story-ring">
+          <div class="story-img" style="background: #555;"></div>
+        </div>
+        <span class="story-name">user_three</span>
+      </div>
+    </div>
+
+    <!-- Create Post -->
+    <div class="create-post">
+      <div class="create-post-header">
+        <div class="user-avatar" style="width: 40px; height: 40px;">U</div>
+        <div class="create-post-input" onclick="document.getElementById('postContent').focus()">
+          What's on your mind?
+        </div>
+      </div>
+      <textarea id="postContent" style="display: none; width: 100%; background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 12px; padding: 12px; color: var(--text-primary); margin-bottom: 12px; min-height: 100px; resize: none;" placeholder="What's on your mind?"></textarea>
+      <div class="create-post-actions">
+        <div class="post-types">
+          <div class="post-type">
+            <span class="post-type-icon" style="color: #00ff88;">📷</span>
+            <span>Photo</span>
+          </div>
+          <div class="post-type">
+            <span class="post-type-icon" style="color: #ff4444;">🎥</span>
+            <span>Video</span>
+          </div>
+          <div class="post-type">
+            <span class="post-type-icon" style="color: #ffaa00;">😊</span>
+            <span>Feeling</span>
+          </div>
+        </div>
+        <button class="btn-post" onclick="createPost()">Post</button>
+      </div>
+    </div>
+
+    <!-- Posts Feed -->
+    <h2 style="margin-bottom: 16px; font-size: 18px; color: var(--text-secondary);">Recent Posts</h2>
+    <div id="posts" class="feed">
+      <!-- Sample Post -->
+      <article class="post">
+        <div class="post-header">
+          <div class="post-user">
+            <div class="post-avatar">J</div>
+            <div class="post-user-info">
+              <span class="post-username">john_doe</span>
+              <span class="post-meta">2 hours ago • 🌍</span>
+            </div>
+          </div>
+          <div class="post-options">⋯</div>
+        </div>
+        <div class="post-content">
+          Just launched my new project! 🚀 Excited to share this journey with all of you. The future is bright! ✨
+        </div>
+        <div class="post-stats">
+          <div class="post-reactions">
+            <div class="reaction-icons">
+              <span class="reaction-icon" style="background: #ff4444;">❤️</span>
+              <span class="reaction-icon" style="background: #ffaa00;">👍</span>
+            </div>
+            <span class="post-counts">128 likes</span>
+          </div>
+          <span class="post-counts">12 comments • 5 shares</span>
+        </div>
+        <div class="post-actions">
+          <div class="post-action">👍 Like</div>
+          <div class="post-action">💬 Comment</div>
+          <div class="post-action">↗️ Share</div>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+  <script>
+    // Toggle textarea on click
+    document.querySelector('.create-post-input').addEventListener('click', function() {
+      this.style.display = 'none';
+      document.getElementById('postContent').style.display = 'block';
+      document.getElementById('postContent').focus();
+      document.querySelector('.btn-post').classList.add('active');
+    });
+
+    document.getElementById('postContent').addEventListener('blur', function() {
+      if (this.value === '') {
+        this.style.display = 'none';
+        document.querySelector('.create-post-input').style.display = 'block';
+        document.querySelector('.btn-post').classList.remove('active');
+      }
+    });
+  </script>
+</body>
+</html>

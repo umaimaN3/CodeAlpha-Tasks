@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Management Tool</title>
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <h1>Project Management</h1>
+      <p style="color: var(--text-secondary); font-size: 1.1rem;">Organize your work with elegance</p>
+    </div>
+
+    <!-- Stats Overview -->
+    <div class="stats-bar" id="statsBar">
+      <div class="stat-item">
+        <div class="stat-value" id="totalProjects">0</div>
+        <div class="stat-label">Projects</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value" id="totalTasks">0</div>
+        <div class="stat-label">Total Tasks</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value" id="completedTasks">0</div>
+        <div class="stat-label">Completed</div>
+      </div>
+    </div>
+
+    <!-- Create Project Section -->
+    <div class="card">
+      <h2 class="card-title">Create New Project</h2>
+      <form id="projectForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="projectTitle">Project Title</label>
+            <input type="text" id="projectTitle" placeholder="Enter project name" required>
+          </div>
+          <div class="form-group">
+            <label for="projectDesc">Description</label>
+            <input type="text" id="projectDesc" placeholder="Brief description" required>
+          </div>
+          <button type="submit" class="btn btn-primary">
+            <span>Create</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Projects Section -->
+    <div class="card" style="background: transparent; box-shadow: none; border: none; padding: 0;">
+      <h2 class="card-title" style="margin-bottom: 25px;">Your Projects</h2>
+      <div id="projectsContainer" class="projects-grid">
+        <!-- Projects will be loaded here -->
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+
+</body>
+</html>

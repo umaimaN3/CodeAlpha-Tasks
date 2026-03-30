@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Product Details</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="navbar">
+
+<div class="logo">
+<h2>MyStore</h2>
+</div>
+
+<div class="nav-links">
+
+<a href="index.html">Home</a>
+<a href="cart.html">Cart</a>
+<a href="login.html">Login</a>
+<a href="register.html">Register</a>
+
+</div>
+
+</div>
+
+<h1>Product Details</h1>
+
+<div id="product-details"></div>
+
+<script>
+
+const params = new URLSearchParams(window.location.search);
+const id = params.get("id");
+
+fetch(`http://localhost:5000/api/products/${id}`)
+.then(res => res.json())
+.then(product => {
+
+const div = document.getElementById("product-details");
+
+div.innerHTML = `
+<h2>${product.name}</h2>
+<p>Price: ${product.price}</p>
+<p>${product.description}</p>
+`;
+
+});
+
+</script>
+
+</body>
+</html>
